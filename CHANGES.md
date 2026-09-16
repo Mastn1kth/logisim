@@ -3,9 +3,10 @@
 # Changes #
 
 * @dev (????-??-??)
-  * Added **Circuit Check / Проверка схемы** to the Project menu. The new Problems panel detects
-    incompatible bit widths, unconnected component inputs, and dangling wire ends. Double-clicking
-    a problem navigates to its circuit location. The interface is available in English and Russian.
+  * Added **Circuit Check / Проверка схемы** to the Project menu (@Mastn1kth). The Problems panel
+    detects incompatible bit widths, unconnected component inputs, and dangling wire ends.
+    Double-clicking a problem navigates to its circuit location. The interface is available in
+    English and Russian.
   * Marked these cross-platform Windows and macOS builds with the `5.0.0-lab1` version suffix so
     they can be distinguished from the upstream 5.0.0 release.
   * Changed the application and package display name to **Logisim** (without “Evolution”), while

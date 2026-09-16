@@ -22,7 +22,7 @@ warning rather than an error.
 
 ---
 
-# Что добавлено в Logisim 5.0.0 Lab
+## Что добавлено в Logisim 5.0.0 Lab
 
 Эта ветка сохраняет симулятор Logisim-evolution 5.0.0 и добавляет одинаковые учебные функции в
 сборки для Windows и macOS.
