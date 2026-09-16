@@ -816,10 +816,14 @@ tasks.register("createApp") {
           "mv", tempPList, pListFilename
       ), "Error while moving Info.plist into the .app directory.")
 
-      func.runCommand(listOf(
-          "codesign", "--force", "--sign", "-", appDirName
-      ), "Error while executing: codesign")
     }
+
+    // jpackage leaves app images unsigned unless a Developer ID is supplied. An ad-hoc
+    // signature keeps both Intel and Apple Silicon builds internally consistent after
+    // packaging, while still allowing official notarization to be added by a distributor.
+    func.runCommand(listOf(
+        "codesign", "--force", "--deep", "--sign", "-", appDirName
+    ), "Error while executing: codesign")
   }
 }
 

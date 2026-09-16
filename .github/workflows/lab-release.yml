@@ -69,6 +69,14 @@ jobs:
         run: chmod +x gradlew
       - name: Build self-contained package
         run: ${{ matrix.command }}
+      - name: Verify the macOS app signature and bundled runtime
+        if: startsWith(matrix.artifact, 'macos-')
+        shell: bash
+        run: |
+          app_path="$(find build -type d -name 'Logisim.app' -print -quit)"
+          test -n "$app_path"
+          test -d "$app_path/Contents/runtime"
+          codesign --verify --deep --strict --verbose=2 "$app_path"
       - name: Mark the Windows installer as a Lab build
         if: matrix.artifact == 'windows-x64'
         shell: pwsh

@@ -3,6 +3,10 @@
 # Changes #
 
 * @dev (????-??-??)
+  * Prepared the `5.0.0-lab2` packages: both Intel and Apple Silicon macOS applications now receive
+    an ad-hoc signature, and release CI verifies the signature and bundled runtime before publishing.
+  * Normalized the Windows MSI filename, added installation guidance, and removed an obsolete
+    third-party dependency-check workflow that produced false failing statuses in this fork.
   * Added **Circuit Check / Проверка схемы** to the Project menu (@Mastn1kth). The Problems panel
     detects incompatible bit widths, unconnected component inputs, and dangling wire ends.
     Double-clicking a problem navigates to its circuit location. The interface is available in

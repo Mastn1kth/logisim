@@ -81,8 +81,9 @@ Image gallery: the three thumbnails above link to a larger set of screenshots in
 
 ## Requirements ##
 
-`Logisim-evolution` is a Java application; therefore, it can run on any operating system supporting the Java runtime enviroment.
-It requires [Java 21 (or newer)](https://adoptium.net/temurin/releases/).
+The ready-to-use Windows and macOS Lab packages include a private Java runtime, so users do not
+need to install Java. Running the standalone JAR or building from source requires
+[Java 21 (or newer)](https://adoptium.net/temurin/releases/).
 
 Accessibility notes:
 
@@ -120,6 +121,25 @@ for background and confirmed configurations.
 ---
 
 ## Download ###
+
+### Logisim Lab packages (recommended for this fork)
+
+Download the current Windows and macOS builds from the
+**[latest Logisim Lab release](https://github.com/Mastn1kth/logisim/releases/latest)**. Every package
+includes Java and contains the Circuit Check feature described above.
+
+| Computer | File to download | Format |
+| --- | --- | --- |
+| Windows with Intel or AMD processor | `logisim-*-windows-amd64.msi` | Installer |
+| Windows with Intel or AMD processor | `logisim-*-windows-amd64.zip` | Portable, no installation |
+| Windows on ARM | `logisim-*-windows-aarch64.zip` | Portable, no installation |
+| Mac with Apple Silicon (M1/M2/M3/M4 and newer) | `logisim-*-aarch64.dmg` | Disk image |
+| Mac with Intel processor | `logisim-*-x86_64.dmg` | Disk image |
+
+The remaining links in this section describe official upstream Logisim-evolution packages and Linux
+options. They do not contain this fork's Circuit Check addition.
+
+### Official upstream and Linux packages
 
 `Logisim-evolution` is available for
 [download in compiled form](https://github.com/logisim-evolution/logisim-evolution/releases)
