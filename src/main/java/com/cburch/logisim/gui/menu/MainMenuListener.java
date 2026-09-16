@@ -109,6 +109,8 @@ public class MainMenuListener extends MenuListener {
         proj.doAction(new RevertAppearanceAction(cur));
       } else if (src == LogisimMenuBar.ANALYZE_CIRCUIT) {
         ProjectCircuitActions.doAnalyze(proj, cur);
+      } else if (src == LogisimMenuBar.CHECK_CIRCUIT) {
+        frame.showCircuitCheck();
       } else if (src == LogisimMenuBar.CIRCUIT_STATS) {
         StatisticsDialog.show(frame, proj.getLogisimFile(), cur);
       }
@@ -154,6 +156,7 @@ public class MainMenuListener extends MenuListener {
       menubar.setEnabled(LogisimMenuBar.TOGGLE_APPEARANCE, canToggleAppearance);
       menubar.setEnabled(LogisimMenuBar.REVERT_APPEARANCE, canRevert);
       menubar.setEnabled(LogisimMenuBar.ANALYZE_CIRCUIT, true);
+      menubar.setEnabled(LogisimMenuBar.CHECK_CIRCUIT, cur != null);
       menubar.setEnabled(LogisimMenuBar.CIRCUIT_STATS, true);
       fireEnableChanged();
     }
@@ -229,6 +232,7 @@ public class MainMenuListener extends MenuListener {
       menubar.addActionListener(LogisimMenuBar.TOGGLE_APPEARANCE, this);
       menubar.addActionListener(LogisimMenuBar.REVERT_APPEARANCE, this);
       menubar.addActionListener(LogisimMenuBar.ANALYZE_CIRCUIT, this);
+      menubar.addActionListener(LogisimMenuBar.CHECK_CIRCUIT, this);
       menubar.addActionListener(LogisimMenuBar.CIRCUIT_STATS, this);
 
       computeEnabled();

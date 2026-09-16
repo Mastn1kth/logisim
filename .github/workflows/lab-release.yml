@@ -1,0 +1,99 @@
+name: Lab cross-platform release
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*-lab*"
+
+permissions:
+  contents: write
+
+env:
+  JDK_VERSION: "21"
+  JDK_DISTRO: temurin
+
+jobs:
+  verify:
+    name: Verify source and tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v7
+      - name: Set up Java
+        uses: actions/setup-java@v6
+        with:
+          java-version: ${{ env.JDK_VERSION }}
+          distribution: ${{ env.JDK_DISTRO }}
+          cache: gradle
+      - name: Run tests and style checks
+        run: |
+          chmod +x gradlew
+          ./gradlew test checkstyleMain checkstyleTest
+
+  package:
+    name: Package ${{ matrix.name }}
+    needs: verify
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Windows x64
+            runner: windows-latest
+            command: .\gradlew.bat createMsi createWindowsPortableZip -x checkstyleMain -x checkstyleTest
+            artifact: windows-x64
+          - name: Windows ARM64
+            runner: windows-11-arm
+            command: .\gradlew.bat createWindowsPortableZip -x checkstyleMain -x checkstyleTest
+            artifact: windows-arm64
+          - name: macOS Intel
+            runner: macos-15-intel
+            command: ./gradlew createDmg -x checkstyleMain -x checkstyleTest
+            artifact: macos-intel
+          - name: macOS Apple Silicon
+            runner: macos-15
+            command: ./gradlew createDmg -x checkstyleMain -x checkstyleTest
+            artifact: macos-apple-silicon
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v7
+      - name: Set up Java
+        uses: actions/setup-java@v6
+        with:
+          java-version: ${{ env.JDK_VERSION }}
+          distribution: ${{ env.JDK_DISTRO }}
+          cache: gradle
+      - name: Make Gradle wrapper executable
+        if: runner.os != 'Windows'
+        run: chmod +x gradlew
+      - name: Build self-contained package
+        run: ${{ matrix.command }}
+      - name: Upload package
+        uses: actions/upload-artifact@v7
+        with:
+          name: ${{ matrix.artifact }}
+          path: build/dist/*
+          if-no-files-found: error
+
+  release:
+    name: Publish GitHub release
+    if: startsWith(github.ref, 'refs/tags/')
+    needs: package
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out release notes
+        uses: actions/checkout@v7
+      - name: Download packages
+        uses: actions/download-artifact@v8
+        with:
+          path: dist
+          merge-multiple: true
+      - name: Create checksums
+        working-directory: dist
+        run: sha256sum * > SHA256SUMS
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          body_path: LAB_FEATURES.md
+          files: dist/*

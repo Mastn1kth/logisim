@@ -2,7 +2,11 @@
 
 ---
 
-# Logisim-evolution #
+# Logisim Lab #
+
+> **Logisim without “Evolution” in the app name.** This classroom-focused fork is based on
+> Logisim-evolution 5.0.0 and adds a cross-platform **Circuit Check / Проверка схемы** panel for
+> Windows and macOS. See [exactly what was added](LAB_FEATURES.md).
 
 * **Table of contents**
   * [Features](#features)
