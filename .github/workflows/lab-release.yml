@@ -69,6 +69,13 @@ jobs:
         run: chmod +x gradlew
       - name: Build self-contained package
         run: ${{ matrix.command }}
+      - name: Mark the Windows installer as a Lab build
+        if: matrix.artifact == 'windows-x64'
+        shell: pwsh
+        run: |
+          $msi = Get-ChildItem build/dist/*.msi | Select-Object -First 1
+          $zip = Get-ChildItem build/dist/*-windows-amd64.zip | Select-Object -First 1
+          Move-Item -LiteralPath $msi.FullName -Destination (Join-Path $msi.DirectoryName "$($zip.BaseName).msi")
       - name: Upload package
         uses: actions/upload-artifact@v7
         with:
