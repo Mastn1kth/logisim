@@ -122,7 +122,7 @@ for background and confirmed configurations.
 
 ## Download ###
 
-### Logisim Lab packages (recommended for this fork)
+### Logisim Lab packages (recommended for this fork) ###
 
 Download the current Windows and macOS builds from the
 **[latest Logisim Lab release](https://github.com/Mastn1kth/logisim/releases/latest)**. Every package
@@ -139,7 +139,7 @@ includes Java and contains the Circuit Check feature described above.
 The remaining links in this section describe official upstream Logisim-evolution packages and Linux
 options. They do not contain this fork's Circuit Check addition.
 
-### Official upstream and Linux packages
+### Official upstream and Linux packages ###
 
 `Logisim-evolution` is available for
 [download in compiled form](https://github.com/logisim-evolution/logisim-evolution/releases)
