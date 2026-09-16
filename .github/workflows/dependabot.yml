@@ -10,6 +10,11 @@
 #
 name: Dependabot
 
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
 on:
   issues:
     types:

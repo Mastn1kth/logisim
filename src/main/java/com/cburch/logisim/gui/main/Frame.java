@@ -14,6 +14,7 @@ import static com.cburch.logisim.gui.Strings.S;
 import com.cburch.draw.toolbar.Toolbar;
 import com.cburch.logisim.Main;
 import com.cburch.logisim.circuit.Circuit;
+import com.cburch.logisim.circuit.CircuitChecker;
 import com.cburch.logisim.circuit.CircuitEvent;
 import com.cburch.logisim.circuit.CircuitListener;
 import com.cburch.logisim.circuit.CircuitState;
@@ -120,6 +121,7 @@ public class Frame extends LFrame.MainWindow implements LocaleListener {
   private final JPanel rightPanel;
   private final JPanel mainPanelSuper;
   private final CardPanel mainPanel;
+  private final CircuitCheckPanel circuitCheckPanel;
   // left-side elements
   private final JTabbedPane topTab;
   private final JTabbedPane bottomTab;
@@ -202,6 +204,8 @@ public class Frame extends LFrame.MainWindow implements LocaleListener {
     mainPanel.addView(EDIT_LAYOUT, layoutCanvasPane);
     mainPanel.setView(EDIT_LAYOUT);
     mainPanelSuper.add(mainPanel, BorderLayout.CENTER);
+    circuitCheckPanel = new CircuitCheckPanel(this);
+    mainPanelSuper.add(circuitCheckPanel, BorderLayout.SOUTH);
 
     // set up the contents, split down the middle, with the canvas
     // on the right and a split pane on the left containing the
@@ -646,6 +650,32 @@ public class Frame extends LFrame.MainWindow implements LocaleListener {
 
   public Canvas getCanvas() {
     return layoutCanvas;
+  }
+
+  /** Runs the editor checks for the current circuit and displays the result below the canvas. */
+  public void showCircuitCheck() {
+    final var circuit = project.getCurrentCircuit();
+    if (circuit == null) return;
+
+    setEditorView(EDIT_LAYOUT);
+    circuitCheckPanel.showIssues(CircuitChecker.check(circuit));
+  }
+
+  /** Navigates from an issue in the Problems panel to its location on the canvas. */
+  void showCircuitCheckIssue(CircuitChecker.Issue issue) {
+    final var circuit = project.getCurrentCircuit();
+    if (circuit == null || issue == null) return;
+
+    setEditorView(EDIT_LAYOUT);
+    layoutCanvas.setHaloedComponent(circuit, issue.component());
+    final var zoomFactor = layoutZoomModel.getZoomFactor();
+    final var x = (int) Math.round(issue.location().getX() * zoomFactor);
+    final var y = (int) Math.round(issue.location().getY() * zoomFactor);
+    SwingUtilities.invokeLater(
+        () -> {
+          layoutCanvas.scrollRectToVisible(new Rectangle(x - 50, y - 50, 100, 100));
+          layoutCanvas.repaint();
+        });
   }
 
   public String getEditorView() {

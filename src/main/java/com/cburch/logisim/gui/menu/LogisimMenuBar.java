@@ -70,6 +70,7 @@ public class LogisimMenuBar extends JMenuBar {
       new LogisimMenuItem("ToggleEditLayoutAppearance");
   public static final LogisimMenuItem REVERT_APPEARANCE = new LogisimMenuItem("RevertAppearance");
   public static final LogisimMenuItem ANALYZE_CIRCUIT = new LogisimMenuItem("AnalyzeCircuit");
+  public static final LogisimMenuItem CHECK_CIRCUIT = new LogisimMenuItem("CheckCircuit");
   public static final LogisimMenuItem CIRCUIT_STATS = new LogisimMenuItem("GetCircuitStatistics");
   public static final LogisimMenuItem SIMULATE_STOP = new LogisimMenuItem("SimulateStop");
   public static final LogisimMenuItem SIMULATE_RUN = new LogisimMenuItem("SimulateRun");
