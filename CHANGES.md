@@ -1,4 +1,4 @@
-[![Logisim-evolution](docs/img/logisim-evolution-logo.png)](https://github.com/logisim-evolution/logisim-evolution)
+[![Logisim](docs/img/logisim-evolution-logo.png)](https://github.com/Mastn1kth/logisim)
 
 # Changes #
 
@@ -13,8 +13,8 @@
     English and Russian.
   * Marked these cross-platform Windows and macOS builds with the `5.0.0-lab1` version suffix so
     they can be distinguished from the upstream 5.0.0 release.
-  * Changed the application and package display name to **Logisim** (without “Evolution”), while
-    retaining upstream attribution and source links.
+  * Changed the application and package display name to **Logisim**, while retaining original
+    project attribution and source links.
 
 * v5.0.0 (2026-09-12)
   * Improved visual representation of Pull Resistor component (@V-Zemlyakov).

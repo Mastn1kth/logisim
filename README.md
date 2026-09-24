@@ -1,11 +1,11 @@
-[![Logisim-evolution](docs/img/logisim-evolution-logo.png)](https://github.com/logisim-evolution/logisim-evolution)
+[![Logisim](docs/img/logisim-evolution-logo.png)](https://github.com/Mastn1kth/logisim)
 
 ---
 
 # Logisim Lab #
 
-> **Logisim without “Evolution” in the app name.** This classroom-focused fork is based on
-> Logisim-evolution 5.0.0 and adds a cross-platform **Circuit Check / Проверка схемы** panel for
+> **Logisim for classroom use.** This classroom-focused version is based on the 5.0.0 codebase and
+> adds a cross-platform **Circuit Check / Проверка схемы** panel for
 > Windows and macOS. See [exactly what was added](LAB_FEATURES.md).
 
 * **Table of contents**
@@ -15,7 +15,7 @@
   * **[Downloads](#download)**
     * [Package Manager](#package-manager)
     * [Nightly builds (unstable)](#nightly-builds)
-  * [Pictures of Logisim-evolution](docs/pics.md)
+  * [Pictures of Logisim](docs/pics.md)
   * [More Information](docs/docs.md)
   * [Bug reports & feature requests](https://github.com/logisim-evolution/logisim-evolution/issues)
   * [For developers](docs/developers.md)

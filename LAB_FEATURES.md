@@ -1,10 +1,10 @@
 # Logisim 5.0.0 Lab additions
 
-This fork keeps the upstream Logisim-evolution 5.0.0 simulator and adds the same classroom-focused
+This version keeps the 5.0.0 simulator and adds classroom-focused
 features to the Windows and macOS builds.
 
-The application is displayed simply as **Logisim**, without “Evolution” in its name. The upstream
-project and its developers remain credited in the documentation and About dialog.
+The application is displayed simply as **Logisim**. The original project and its developers remain
+credited in the documentation and About dialog.
 
 ## Added in `5.0.0-lab1`
 
@@ -39,11 +39,11 @@ warning rather than an error.
 
 ## Что добавлено в Logisim 5.0.0 Lab
 
-Эта ветка сохраняет симулятор Logisim-evolution 5.0.0 и добавляет одинаковые учебные функции в
+Эта версия сохраняет симулятор 5.0.0 и добавляет учебные функции в
 сборки для Windows и macOS.
 
-В интерфейсе приложение называется просто **Logisim**, без слова «Evolution». При этом ссылка на
-исходный проект и авторство разработчиков сохранены в документации и окне «О программе».
+В интерфейсе приложение называется просто **Logisim**. Ссылка на исходный проект и авторство
+разработчиков сохранены в документации и окне «О программе».
 
 ## Добавлено в `5.0.0-lab1`
 
