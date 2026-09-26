@@ -22,6 +22,10 @@ credited in the documentation and About dialog.
 - Release automation verifies the macOS signature and bundled runtime before publishing.
 - Windows installer and portable archive names consistently include the Lab version.
 
+## Startup fix in `5.0.0-lab3`
+
+- The application opens directly without showing a startup splash screen.
+
 The checker is non-destructive: it reads the current circuit and never changes components, wires,
 or saved project files. Some component inputs are optional by design, so an unconnected input is a
 warning rather than an error.
@@ -60,6 +64,10 @@ warning rather than an error.
 - Приложения для Intel и Apple Silicon получают ad-hoc подпись.
 - Перед публикацией автоматика проверяет подпись macOS и наличие встроенной Java.
 - В названиях установщика и портативного архива Windows теперь всегда указана Lab-версия.
+
+## Исправление запуска в `5.0.0-lab3`
+
+- Приложение открывается сразу, без стартовой заставки.
 
 Проверка безопасна для проекта: она только читает текущую схему и не изменяет компоненты, провода
 или сохранённый файл. Некоторые входы могут быть необязательными, поэтому свободный вход считается
