@@ -133,7 +133,8 @@ public class Startup implements AWTEventListener {
 
   private Startup(boolean isTty) {
     this.isTty = isTty;
-    this.showSplash = !isTty;
+    // Lab builds open directly in the editor; do not show a startup splash screen.
+    this.showSplash = false;
   }
 
   static void doOpen(File file) {
